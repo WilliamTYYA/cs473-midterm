@@ -19,7 +19,7 @@ import kotlinx.coroutines.flow.update
 //    private val alphabetRepository: AlphabetRepository
 //): ViewModel() {
 class ExpViewModel(
-    private val dataSource: List<Item> = DataSource.loadData()
+    private val dataSource: List<Item> = DataSource.data
 ): ViewModel() {
     //    private val alphabetData = AlphabetData.alphabetData
 //    private val alphabetData = alphabetRepository.getAlphabetData()
