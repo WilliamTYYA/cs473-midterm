@@ -26,9 +26,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.miu.cs473_midterm.data.DataSource
-import com.miu.lesson5_part2.ui.ExpViewModel
+import com.miu.cs473_midterm.data.ExpRepositoryImp
+import com.miu.cs473_midterm.ui.ExpViewModel
 
 @Composable
 fun ExpScreen(modifier: Modifier = Modifier) {
@@ -42,14 +44,18 @@ fun ExpScreen(modifier: Modifier = Modifier) {
         ) {
 //            val sample = DataSource.loadData()[0]
 
-            val expViewModel: ExpViewModel = viewModel {
-                ExpViewModel()
-            }
-            val counterUIState: ExpUIState by expViewModel.expUIState.collectAsState()
+//            val expViewModel: ExpViewModel = viewModel {
+//                ExpViewModel(ExpRepositoryImp())
+//            }
+//            val expUIState: ExpUIState by expViewModel.expUIState.collectAsState()
+
+            val expViewModel: ExpViewModel = hiltViewModel()
+            val expUIState = expViewModel.expUIState.collectAsState()
+//            val expUIState: ExpUIState by expViewModel.expUIState.collectAsState()
 
             Image(
-                painter = painterResource(id= counterUIState.image.image),
-                contentDescription = stringResource(id=counterUIState.image.title),
+                painter = painterResource(id= expUIState.value.image.image),
+                contentDescription = stringResource(id=expUIState.value.image.title),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp),
@@ -59,7 +65,7 @@ fun ExpScreen(modifier: Modifier = Modifier) {
             Spacer(modifier= Modifier.padding(5.dp))
 
             Text(
-                text = stringResource(id=counterUIState.image.title)
+                text = stringResource(id=expUIState.value.image.title)
             )
 
             Spacer(modifier= Modifier.padding(5.dp))
