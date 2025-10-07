@@ -42,16 +42,8 @@ fun ExpScreen(modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top
         ) {
-//            val sample = DataSource.loadData()[0]
-
-//            val expViewModel: ExpViewModel = viewModel {
-//                ExpViewModel(ExpRepositoryImp())
-//            }
-//            val expUIState: ExpUIState by expViewModel.expUIState.collectAsState()
-
             val expViewModel: ExpViewModel = hiltViewModel()
             val expUIState = expViewModel.expUIState.collectAsState()
-//            val expUIState: ExpUIState by expViewModel.expUIState.collectAsState()
 
             Image(
                 painter = painterResource(id= expUIState.value.image.image),

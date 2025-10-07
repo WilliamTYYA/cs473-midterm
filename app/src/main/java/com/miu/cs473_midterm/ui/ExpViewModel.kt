@@ -17,9 +17,6 @@ import javax.inject.Inject
 class ExpViewModel @Inject constructor (
     private val expRepository: ExpRepository
 ): ViewModel() {
-//class ExpViewModel(
-//    private val dataSource: List<Item> = DataSource.data
-//): ViewModel() {
     private val imageData = expRepository.getImageData()
 
     // create MutableStateFlow
@@ -49,29 +46,5 @@ class ExpViewModel @Inject constructor (
                 )
             }
         }
-
-//        val currentIndex = dataSource.indexOf(_expUIState.value.image)
-//        if (currentIndex < dataSource.size - 1) {
-//            val nextImage = dataSource[currentIndex + 1]
-//            _expUIState.update {
-//                it.copy(
-//                    image = nextImage
-//                )
-//            }
-//        } else {
-//            _expUIState.update {
-//                it.copy(
-//                    image = dataSource[0]
-//                )
-//            }
-//        }
-//
-//        if (currentIndex == dataSource.size - 2) {
-//            _expUIState.update {
-//                it.copy(
-//                    isCompleted = true
-//                )
-//            }
-//        }
     }
 }
